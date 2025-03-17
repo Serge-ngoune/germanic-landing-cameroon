@@ -2,8 +2,19 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { ChevronDown, Languages, MapPin, MessageSquare, Users } from "lucide-react";
+import { 
+  CalendarDays, 
+  ChevronDown, 
+  GraduationCap, 
+  Languages, 
+  Lightbulb, 
+  MapPin, 
+  MessageSquare, 
+  Sparkles, 
+  Users 
+} from "lucide-react";
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 
 const Index = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -33,6 +44,20 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-white">
+      <Helmet>
+        <title>DeutschKameroon - German Language School in Cameroon</title>
+        <meta name="description" content="Learn German in Cameroon with DeutschKameroon. We offer German language courses for all levels from A1 to C1." />
+        <meta name="keywords" content="German language, Cameroon, Deutsch, language courses, Yaoundé, Douala, Bamenda, A1, B1, C1, German studies" />
+        <meta property="og:title" content="DeutschKameroon - German Language School in Cameroon" />
+        <meta property="og:description" content="Learn German in Cameroon with DeutschKameroon. We offer German language courses for all levels from A1 to C1." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://deutschkameroon.cm" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="DeutschKameroon - German Language School in Cameroon" />
+        <meta name="twitter:description" content="Learn German in Cameroon with DeutschKameroon. We offer German language courses for all levels from A1 to C1." />
+        <link rel="canonical" href="https://deutschkameroon.cm" />
+      </Helmet>
+
       {/* Navigation */}
       <nav className="py-4 px-6 flex justify-between items-center sticky top-0 bg-white/90 backdrop-blur-sm z-10 shadow-sm">
         <div className="flex items-center gap-2">
@@ -43,7 +68,9 @@ const Index = () => {
         <ul className="hidden md:flex space-x-8">
           <li><a href="#home" className="text-gray-600 hover:text-primary">Home</a></li>
           <li><a href="#about" className="text-gray-600 hover:text-primary">About</a></li>
+          <li><a href="#services" className="text-gray-600 hover:text-primary">Services</a></li>
           <li><a href="#courses" className="text-gray-600 hover:text-primary">Courses</a></li>
+          <li><a href="#events" className="text-gray-600 hover:text-primary">Events</a></li>
           <li><a href="#testimonials" className="text-gray-600 hover:text-primary">Testimonials</a></li>
           <li><a href="#contact" className="text-gray-600 hover:text-primary">Contact</a></li>
         </ul>
@@ -106,8 +133,36 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Services Section - NEW */}
+      <section id="services" className="py-20 px-6 md:px-20 scroll-element">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-4">Our Services</h2>
+          <p className="text-gray-600 text-center mb-16 max-w-2xl mx-auto">
+            Beyond language courses, we offer a range of services to support your German language journey.
+          </p>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            <ServiceCard 
+              icon={<GraduationCap className="h-12 w-12 text-primary" />}
+              title="Exam Preparation"
+              description="Specialized coaching for TestDaF, DSH, Goethe-Zertifikat, and other German language proficiency exams."
+            />
+            <ServiceCard 
+              icon={<Lightbulb className="h-12 w-12 text-accent" />}
+              title="University Application Assistance"
+              description="Guidance with German university applications, including document translation and interview preparation."
+            />
+            <ServiceCard 
+              icon={<Sparkles className="h-12 w-12 text-primary" />}
+              title="Translation Services"
+              description="Professional translation of documents from German to English or French and vice versa."
+            />
+          </div>
+        </div>
+      </section>
+
       {/* Courses Section */}
-      <section id="courses" className="py-20 px-6 md:px-20 scroll-element">
+      <section id="courses" className="py-20 px-6 md:px-20 bg-gray-50 scroll-element">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-4">Our German Courses</h2>
           <p className="text-gray-600 text-center mb-16 max-w-2xl mx-auto">
@@ -139,6 +194,47 @@ const Index = () => {
             <Button size="lg">
               View All Courses
             </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Events Section - NEW */}
+      <section id="events" className="py-20 px-6 md:px-20 scroll-element">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-4">Upcoming Events</h2>
+          <p className="text-gray-600 text-center mb-16 max-w-2xl mx-auto">
+            Join our cultural and educational events to practice your German and connect with the community.
+          </p>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            <EventCard 
+              title="Oktoberfest Celebration"
+              date="October 15, 2023"
+              location="DeutschKameroon Yaoundé Center"
+              description="Experience authentic German culture with traditional food, music, and beer at our annual Oktoberfest celebration."
+              buttonText="Register Now"
+            />
+            <EventCard 
+              title="German Film Festival"
+              date="November 5-7, 2023"
+              location="Cultural Center, Douala"
+              description="A three-day festival featuring award-winning German films with English and French subtitles. Discussion panels follow each screening."
+              buttonText="View Program"
+            />
+            <EventCard 
+              title="Study in Germany Info Session"
+              date="December 12, 2023"
+              location="Virtual Event (Zoom)"
+              description="Learn about university opportunities in Germany, application processes, scholarships, and visa requirements."
+              buttonText="Join Online"
+            />
+            <EventCard 
+              title="German Christmas Market"
+              date="December 18, 2023"
+              location="DeutschKameroon Bamenda Center"
+              description="Enjoy a traditional German Christmas market with handcrafted gifts, seasonal treats, and festive activities."
+              buttonText="Learn More"
+            />
           </div>
         </div>
       </section>
@@ -259,7 +355,9 @@ const Index = () => {
               <ul className="space-y-2">
                 <li><a href="#home" className="text-gray-400 hover:text-white">Home</a></li>
                 <li><a href="#about" className="text-gray-400 hover:text-white">About Us</a></li>
+                <li><a href="#services" className="text-gray-400 hover:text-white">Services</a></li>
                 <li><a href="#courses" className="text-gray-400 hover:text-white">Courses</a></li>
+                <li><a href="#events" className="text-gray-400 hover:text-white">Events</a></li>
                 <li><a href="#testimonials" className="text-gray-400 hover:text-white">Testimonials</a></li>
                 <li><a href="#contact" className="text-gray-400 hover:text-white">Contact</a></li>
               </ul>
@@ -308,7 +406,7 @@ const Index = () => {
       </footer>
 
       {/* Custom CSS for animations */}
-      <style jsx>{`
+      <style>{`
         .scroll-element {
           opacity: 0;
           transform: translateY(20px);
@@ -327,9 +425,22 @@ const Index = () => {
 // Component for feature cards in the About section
 const FeatureCard = ({ icon, title, description }) => {
   return (
-    <div className="p-6 bg-white rounded-lg shadow-sm border border-gray-100 transition-all duration-300 hover:shadow-md">
+    <div className="p-6 bg-white rounded-lg shadow-sm border border-gray-100 transition-all duration-300 hover:shadow-md hover:border-primary/20">
       <div className="mb-4">{icon}</div>
       <h3 className="text-xl font-semibold mb-2">{title}</h3>
+      <p className="text-gray-600">{description}</p>
+    </div>
+  );
+};
+
+// Component for service cards in the Services section
+const ServiceCard = ({ icon, title, description }) => {
+  return (
+    <div className="p-8 bg-white rounded-lg shadow-sm border border-gray-100 transition-all duration-300 hover:shadow-md hover:border-accent/20 text-center">
+      <div className="inline-flex justify-center items-center w-20 h-20 rounded-full bg-gray-50 mb-6">
+        {icon}
+      </div>
+      <h3 className="text-xl font-semibold mb-3">{title}</h3>
       <p className="text-gray-600">{description}</p>
     </div>
   );
@@ -353,10 +464,30 @@ const CourseCard = ({ title, duration, description, price }) => {
   );
 };
 
+// Component for event cards in the Events section
+const EventCard = ({ title, date, location, description, buttonText }) => {
+  return (
+    <Card className="overflow-hidden transition-all duration-300 hover:shadow-md">
+      <CardContent className="p-6">
+        <div className="flex items-center mb-4 text-accent">
+          <CalendarDays className="h-5 w-5 mr-2" />
+          <span className="font-medium">{date}</span>
+        </div>
+        <h3 className="text-xl font-semibold mb-2">{title}</h3>
+        <p className="text-sm text-gray-500 mb-3">{location}</p>
+        <p className="text-gray-600 mb-6">{description}</p>
+        <Button variant="outline" size="sm" className="w-full">
+          {buttonText}
+        </Button>
+      </CardContent>
+    </Card>
+  );
+};
+
 // Component for testimonial cards in the Testimonials section
 const TestimonialCard = ({ content, author, position }) => {
   return (
-    <div className="p-6 bg-white rounded-lg shadow-sm border border-gray-100">
+    <div className="p-6 bg-white rounded-lg shadow-sm border border-gray-100 transition-all duration-300 hover:shadow-md hover:border-primary/20">
       <p className="text-gray-600 mb-6 italic">"{content}"</p>
       <div>
         <p className="font-semibold">{author}</p>
